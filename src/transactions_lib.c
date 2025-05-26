@@ -47,7 +47,7 @@ int write_transactions(const char *filename, Transaction *transactions, int coun
     }
 
     for (int i = 0; i < count; ++i) {
-        Transaction *t = &transactions[i]; //why use pointers here tho, jus used Transaction t = transactions[i], and accessed properties using t.property
+        Transaction *t = &transactions[i]; 
         fprintf(fp, "%d,%d,%d,%d,%.2lf,%s,%s,%s\n",
             t->id, t->date.day, t->date.month, t->date.year,
             t->amount, t->account, t->category, t->desc);
@@ -62,7 +62,7 @@ int add_transaction(const char *filename, Transaction *transactions, int *count,
     if (*count >= MAX_TRANSACTIONS) return 0;
     transactions[*count] = *new_t;
     (*count)++;
-    return write_transactions(filename, transactions, *count); //again why pass integer pointers here and in the definition
+    return write_transactions(filename, transactions, *count);
 }
 
 // Finds a transaction by id. Returns pointer or NULL if not found.
